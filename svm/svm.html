@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+    </head>
+    <body>
+        <!--h1> SVM </h1>
+        <h2> SVM Loss</h2-->
+        <p> The SVM loss is set up so that SVM "wants" the correct class for each image to have a score higher than the incorrect classes by some fixed margin $\Delta$. </p>
+        <p> Let the score for the j-th class is the j-th element: $s_j = f(x_i, W)_j$. The Multiclass SVM loss for the i-th example is then formalized as follows: $$L_i = \sum_{j \neq y_i} max(0, s_j - s_{y_i} + \Delta)$$</p>
+        <p> The threshold at zero $max(0, -)$ function is often called the <em>hinge loss</em>.</p>
+        <p> The total loss would be <em>data loss</em> plus <em>regularization loss</em>: $$ L = \frac{1}{N} \sum_i L_i + \lambda R(W) $$ </p>
+        <p>The loss function quantifies our unhappiness with predictions on the training set.</p>
+        <p><img src='margin.jpg'/></p>
+        <p>The SVM "wants" the score of the correct class to be higher than all other scores by at least a margin of delta. If any class has a score inside the red region (or higher), then there will be accumulated loss. Otherwise the loss will be zero.</p>
+        <p>Our objective will be to find the weights that will simultaneously satisfy this constraint for all examples in the training data and give a total loss that is as low as possible.</p>
+
+    </body>
+</html>
