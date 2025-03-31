@@ -1,9 +1,632 @@
-Hello World
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王海波 - 个人简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f7ff',
+                            100: '#e0eefe',
+                            200: '#bae0fd',
+                            300: '#7ac6fb',
+                            400: '#36a6f6',
+                            500: '#0c87eb',
+                            600: '#006cd9',
+                            700: '#0057b0',
+                            800: '#064a8d',
+                            900: '#0a3f75',
+                        },
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <!-- 主题切换按钮 -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-all duration-300 shadow-md hover:shadow-lg">
+        <i class="fas fa-sun dark:hidden"></i>
+        <i class="fas fa-moon hidden dark:block"></i>
+    </button>
 
-# Header
+    <!-- 顶部个人信息 -->
+    <header class="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-16 md:py-24 px-4 animate-fade-in">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="w-32 h-32 md:w-40 md:h-40 bg-white/20 rounded-full flex items-center justify-center text-4xl md:text-5xl font-bold mb-6 md:mb-0 md:mr-8">
+                    王海
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4">王海波</h1>
+                    <p class="text-xl md:text-2xl opacity-90 mb-6">人工智能与自然语言处理专家</p>
+                    
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>+86 18510900920</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>apolorwang@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-github mr-2"></i>
+                            <a href="https://github.com/Haibo-Wang-ORG?tab=repositories" target="_blank" class="hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-Test
+    <!-- 导航栏 -->
+    <div class="sticky top-0 z-40 bg-white dark:bg-gray-800 shadow-md">
+        <div class="container mx-auto max-w-5xl">
+            <nav class="flex overflow-x-auto whitespace-nowrap py-4 px-4 md:px-0 md:justify-center">
+                <a href="#education" class="px-4 py-2 mx-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium">教育背景</a>
+                <a href="#experience" class="px-4 py-2 mx-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium">工作经历</a>
+                <a href="#skills" class="px-4 py-2 mx-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium">技能</a>
+                <a href="#projects" class="px-4 py-2 mx-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium">项目经验</a>
+                <a href="#publications" class="px-4 py-2 mx-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium">论文</a>
+                <a href="#patents" class="px-4 py-2 mx-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium">专利</a>
+                <a href="#awards" class="px-4 py-2 mx-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium">奖励</a>
+            </nav>
+        </div>
+    </div>
 
-$$M = \sum_i^N f(a_i)$$
+    <!-- 主要内容 -->
+    <main class="container mx-auto max-w-5xl px-4 py-12">
+        <!-- 教育背景 -->
+        <section id="education" class="mb-16 section-fade">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+                <span class="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                    <i class="fas fa-graduation-cap"></i>
+                </span>
+                教育背景
+            </h2>
 
-Link to <a href="svm/svm.html">svm</a> page.
+            <div class="space-y-6">
+                <!-- 昆士兰大学 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400">昆士兰大学</h3>
+                            <p class="text-gray-600 dark:text-gray-400">人工智能 博士</p>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-500 mt-2 md:mt-0">2011 - 2015</div>
+                    </div>
+                </div>
+
+                <!-- 北京大学硕士 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400">北京大学信息科学技术学院</h3>
+                            <p class="text-gray-600 dark:text-gray-400">计算机软件与理论 理学硕士</p>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-500 mt-2 md:mt-0">2007 - 2010</div>
+                    </div>
+                </div>
+
+                <!-- 北京大学双学士 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400">北京大学</h3>
+                            <p class="text-gray-600 dark:text-gray-400">计算机软件与理论 理学学士</p>
+                            <p class="text-gray-600 dark:text-gray-400">信息管理与信息系统 管理学学士</p>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-500 mt-2 md:mt-0">2002 - 2006</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工作经历 -->
+        <section id="experience" class="mb-16 section-fade">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+                <span class="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                    <i class="fas fa-briefcase"></i>
+                </span>
+                工作经历
+            </h2>
+
+            <div class="space-y-8">
+                <!-- 深圳乐博科技 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400">深圳乐博科技有限公司</h3>
+                            <p class="text-gray-600 dark:text-gray-400">高级算法专家</p>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-500 mt-2 md:mt-0">2024.01 – 2025.02</div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>主导AI商业化探索落地和人才培养，带领多客AI实现较上年2.3倍营收</li>
+                        <li>从零到一构建了多客自学习系统，解决了依赖人工梳理和添加大量知识点的痛点，实现80+%的问题解决率（行业50%左右），较竞品形成代差性优势</li>
+                        <li>构建小语种AI对话翻译系统，为多客在东南亚多语言环境下提供精准有效的小语种翻译</li>
+                        <li>撰写五篇专利交底书</li>
+                    </ul>
+                </div>
+
+                <!-- VMware AI Lab -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400">VMware AI Lab</h3>
+                            <p class="text-gray-600 dark:text-gray-400">大模型算法专家（第三方合作）</p>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-500 mt-2 md:mt-0">2023.07 – 2024.01</div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>负责大模型前沿技术的开发研究</li>
+                        <li>研究Offsite Tuning大模型两方隐私保护技术</li>
+                        <li>将联邦大模型FATE LLM迁移到华为昇腾910上进行NPU加速</li>
+                    </ul>
+                </div>
+
+                <!-- 竹间智能科技（深圳） -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400">竹间智能科技（深圳）有限公司</h3>
+                            <p class="text-gray-600 dark:text-gray-400">资深技术专家</p>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-500 mt-2 md:mt-0">2019.08 – 2023.05</div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>负责解决业务中最具挑战性的技术问题。结合实践追踪前沿技术，找到在场景中落地效果好的方法</li>
+                        <li>组建并带领算法团队研发分类模型、序列标注模型、零样本学习和小样本学习语义匹配模型、知识图谱三元组抽取模型、文本聚类分析、自动语料扩写及质量评估模型等工具链，发现和抽取无结构文本中所包含的结构化信息，以进行深度语义理解</li>
+                        <li>申请七件专利</li>
+                    </ul>
+                </div>
+
+                <!-- 竹间智能科技（上海） -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400">竹间智能科技（上海）有限公司</h3>
+                            <p class="text-gray-600 dark:text-gray-400">技术专家</p>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-500 mt-2 md:mt-0">2015.11 – 2019.07</div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>带领团队研发聊天机器人和画像系统</li>
+                        <li>研发文本分类(包括长文本分类)、知识蒸馏、多标签分类、命名实体识别、文本聚类、机器阅读理解等系列模型以进行自然语言理解</li>
+                        <li>申请七件专利，其中五件已授权</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能 -->
+        <section id="skills" class="mb-16 section-fade">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+                <span class="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                    <i class="fas fa-tools"></i>
+                </span>
+                经验和技能
+            </h2>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+                <ul class="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300">
+                    <li>有十年带领团队进行 NLP 和大模型实际应用落地和解决业务难题的经验</li>
+                    <li>熟练掌握机器学习、深度学习、数据结构和算法以及面向对象编程</li>
+                    <li>熟练使用 Python、Pytorch、Tensorflow 和 Keras</li>
+                    <li>熟悉 Java 和 C++</li>
+                    <li>熟悉模型服务化封装</li>
+                </ul>
+
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fab fa-python text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>Python</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fas fa-brain text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>PyTorch</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fas fa-network-wired text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>TensorFlow</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fas fa-code text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>Keras</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fab fa-java text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>Java</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fab fa-cuttlefish text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>C++</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fas fa-project-diagram text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>NLP</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
+                        <i class="fas fa-robot text-xl mb-2 text-primary-600 dark:text-primary-400"></i>
+                        <div>大模型</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目经验 -->
+        <section id="projects" class="mb-16 section-fade">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+                <span class="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                    <i class="fas fa-project-diagram"></i>
+                </span>
+                项目经验
+            </h2>
+
+            <div class="space-y-8">
+                <!-- 大模型研究 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400 mb-4">大模型研究</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>Offsite Tuning大模型两方隐私保护技术，实现了LLaMA2 7B/13B/70B的两方分离和offsite tuning，实现了LoRA fine-tuning，结合deepspeed，对分离后的Emulator在data owner一方基于下游数据进行并行微调训练，并将训练好的Adapter参数plug back到foundation model从而完成大模型在隐私保护下的领域迁移</li>
+                        <li>将联邦大模型FATE LLM和联邦学习框架FATE迁移到华为昇腾910 NPU芯片上，实现联邦大模型训练和推理的NPU加速</li>
+                        <li>用Langchain + Text2vec + Faiss + Chatglm构建文档问答系统，并对模型进行finetune，finetune之后较原模型有更精准的领域知识</li>
+                    </ul>
+                </div>
+
+                <!-- 序列标注 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400 mb-4">序列标注</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>实现了序列标注模型，并部署到了机器学习平台</li>
+                        <li>对数据的使用效率较高，200条左右的标注数据即可实现效果显著的领域结构化数据抽取，是对无结构文本进行结构化数据处理的通用技术之一</li>
+                        <li>在大疆VOC项目中对微博、贴吧、知乎、淘宝和京东评论等大量充斥噪音的文本数据进行结构化抽取，获取用户的声音，以及为后期的标签发现聚类提供干净的数据源</li>
+                        <li>在广州12345项目中对用户对话日志进行分析，抽取用户来电所反映的问题信息等</li>
+                        <li>在招商轮船项目中对邮件文本进行分析和结构化抽取</li>
+                    </ul>
+                </div>
+
+                <!-- 零样本语义匹配模型 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400 mb-4">零样本语义匹配模型</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>构建了FAQ零样本Embedding学习模型</li>
+                        <li>结合BERT等预训练模型、度量学习、生成模型以及多任务学习，训练出了FAQ零样本Embedding学习模型，该单一模型在累积的52个FAQ测试集上，有12个准确率超95%，29个准确率超90%，39个准确率超85%，42个准确率超80%</li>
+                        <li>在新来的人保寿险FAQ测试集上，利用该模型直接进行测试（零样本预测），准确率达到95.2%。该模型已经部署到机器学习平台</li>
+                    </ul>
+                </div>
+
+                <!-- 知识图谱 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400 mb-4">知识图谱</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>构建了低资源知识图谱构建系统，标注几百条数据就可以实现新领域图谱的构建</li>
+                        <li>在融资信息三元组抽取以及汤臣倍健医疗信息三元组抽取上进行了应用，累计抽取8万多对高质量三元组</li>
+                        <li>与合作方一起参与电力行业知识图谱比赛，利用三天时间从62支队伍中从没有名次推进到最好第7名的成绩</li>
+                    </ul>
+                </div>
+
+                <!-- 呼叫中心文本分析 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold text-primary-700 dark:text-primary-400 mb-4">呼叫中心文本分析</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>对转录的客服对话文本(包含诸多转录错误)进行语义理解，分析来电原因</li>
+                        <li>开发单标签模型、多标签模型以及集成模型;涉及多模型融合，增量模型训练和主动学习等技术</li>
+                        <li>研究并实现了 Hinton 的 Knowledge Distillation 方法，即用一个模型去学习 9 个模型组成的集成模型。该方法拥有集成模型高预测精度的优点，同时还可以提升预测时的计算效率，降低部署复杂度，使系统更易于维护</li>
+                        <li>为本项目开发的模型技术，随后应用在多个文本分析项目上，包括某行文本分析项目以及某标杆汽车厂商文本分析项目，在动用一个算法同事和一周开发时间的情形下，竞标结果高出友商两个点</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 论文 -->
+        <section id="publications" class="mb-16 section-fade">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+                <span class="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                    <i class="fas fa-book"></i>
+                </span>
+                代表论文
+            </h2>
+
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+                    <ol class="list-decimal pl-5 space-y-4 text-gray-700 dark:text-gray-300">
+                        <li>
+                            <p class="font-medium">Haibo Wang, Hanna Kurniawati, Surya Singh, Mandyam Srinivasan. In-silico behavior discovery system: an application of planning in ethology.</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Proceedings of the Twenty-Fifth International Conference on Automated Planning and Scheduling (ICAPS), Jerusalem, Israel. 2015.</p>
+                            <p class="text-sm text-primary-600 dark:text-primary-400 italic">Outstanding Student Paper Award</p>
+                        </li>
+                        <li>
+                            <p class="font-medium">Haibo Wang, Hanna Kurniawati, Surya Singh, Mandyam Srinivasan. Animal locomotion in silico: a POMDP-based tool to study mid-air collision avoidance strategies in flying animals.</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Proceedings of the Australasian Conference on Robotics & Automation, Sydney, Australia. 2013.</p>
+                            <p class="text-sm text-primary-600 dark:text-primary-400 italic">Shortlisted for RSPCA Award</p>
+                        </li>
+                        <li>
+                            <p class="font-medium">Haibo Wang, Kuien Liu. User oriented trajectory similarity search.</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Proceedings of the ACM SIGKDD International Workshop on Urban Computing, Beijing, China. 2012.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- 专利 -->
+        <section id="patents" class="mb-16 section-fade">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+                <span class="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                    <i class="fas fa-certificate"></i>
+                </span>
+                专利
+            </h2>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">一种知识图谱构建方法、装置、电子设备及存储介质</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">信息提取方法、装置、设备和存储介质</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">一种基于文本数据的标签识别方法</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">一种大规模高效获取识别对话意图用语料的方法</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">一种解决自然语言处理多模块相互遮挡问题的方法</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">一种提升意图模型识别其他类鲁棒性的方法</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">一种快速获取FAQ模型训练语料的方法</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">自动识别语句关系和实体的方法及装置</p>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-medium mb-4 text-primary-700 dark:text-primary-400">已授权专利</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                            <p class="text-gray-700 dark:text-gray-300">基于对话交互信息构建用户画像的系统及方法</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                            <p class="text-gray-700 dark:text-gray-300">获取用户画像的方法及系统</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                            <p class="text-gray-700 dark:text-gray-300">一种面向无结构文本智能问答的方法和系统</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                            <p class="text-gray-700 dark:text-gray-300">人机对话内容处理方法</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                            <p class="text-gray-700 dark:text-gray-300">用户保持对话系统连贯性的方法及系统</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-primary-50 dark:bg-primary-900/30">
+                            <p class="text-gray-700 dark:text-gray-300">一种智能聊天机器人中对输入语句的优化方法及装置</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 奖励 -->
+        <section id="awards" class="mb-16 section-fade">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+                <span class="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                    <i class="fas fa-trophy"></i>
+                </span>
+                奖励
+            </h2>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+                <ul class="space-y-4">
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <span class="text-gray-700 dark:text-gray-300">深圳市海外高层次人才</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <span class="text-gray-700 dark:text-gray-300">ICAPS Outstanding Student Paper Award</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <span class="text-gray-700 dark:text-gray-300">ICAPS Student Travel Scholarship</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <span class="text-gray-700 dark:text-gray-300">Research Assist Funding</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <span class="text-gray-700 dark:text-gray-300">University of Queensland International Scholarship (UQI)</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-gray-700 dark:text-gray-300">CSC Scholarship</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="mb-16 section-fade">
+            <div class="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl p-6 md:p-8 shadow-md text-center">
+                <h3 class="text-xl font-bold mb-4 text-primary-800 dark:text-primary-300">联系我</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-6">
+                    如果您对我的专业背景和项目经验感兴趣，欢迎随时联系我讨论合作机会。
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:apolorwang@gmail.com" class="bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-lg shadow transition-colors duration-300 flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        发送邮件
+                    </a>
+                    <a href="tel:+8618510900920" class="bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-lg shadow transition-colors duration-300 flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        电话联系
+                    </a>
+                    <a href="https://github.com/Haibo-Wang-ORG?tab=repositories" target="_blank" class="bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-lg shadow transition-colors duration-300 flex items-center">
+                        <i class="fab fa-github mr-2"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-100 dark:bg-gray-800 py-12">
+        <div class="container mx-auto max-w-5xl px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-lg font-bold mb-2">王海波 - 个人简历</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        人工智能与自然语言处理专家
+                    </p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="text-gray-600 dark:text-gray-400 text-sm mb-2">
+                        作者：王海波
+                    </div>
+                    <div class="text-gray-500 dark:text-gray-500 text-xs">
+                        © 2025 版权所有
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-4 right-4 bg-primary-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // 检查系统偏好
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+        
+        // 滚动动画
+        const sections = document.querySelectorAll('.section-fade');
+        const backToTop = document.getElementById('back-to-top');
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 返回顶部按钮
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', () => {
+            // 显示/隐藏返回顶部按钮
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.remove('opacity-100', 'visible');
+                backToTop.classList.add('opacity-0', 'invisible');
+            }
+            
+            // 元素进入视口时的动画
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+        
+        // 页面加载时触发一次滚动事件，显示初始可见区域的元素
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
